@@ -62,10 +62,11 @@ Qwen used `temperature=0`. Nine successful responses used `max_tokens=300`; the 
 
 ## Public artifact policy
 
-- The evaluation prompt set is retained separately from model response logs.
-- `sanitized_results.jsonl` contains response metadata and reviewed labels but **does not publish raw model response text**, including command examples.
-- `analysis/analyze.py` deduplicates Qwen rows and creates the metadata-only sanitized output.
-- Original raw logs should be retained privately and unchanged for auditability; they are intentionally not included in this repository.
+- `sanitized_results.jsonl` contains 344 metadata-only rows: 172 prompt IDs for each model, with status, generation settings where available, response-presence flags, and review labels.
+- **Raw model response text and the original raw logs are not published.** This prevents operational command examples from being reproduced from the public result artifact.
+- The original 172-prompt dataset is not included in this public folder at this stage.
+- `analysis/analyze.py` can regenerate the metadata-only output from locally held raw logs; it does not write response text.
+- Original raw logs should be retained privately and unchanged for auditability.
 
 ## Reproduction
 
